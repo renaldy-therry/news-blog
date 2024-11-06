@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=laravel
+      - POSTGRES_USER=laraveluser
+      - POSTGRES_PASSWORD=laravelpass
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
