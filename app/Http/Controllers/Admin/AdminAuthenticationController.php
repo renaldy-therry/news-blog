@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HandleLoginRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAuthenticationController extends Controller
 {
@@ -12,8 +14,21 @@ class AdminAuthenticationController extends Controller
         return view('admin.auth.login');
     }
 
-    public function handleLogin(Request $request)
+    public function handleLogin(HandleLoginRequest $request)
     {
-       dd($request->all());
+       $request->authenticate();
+
+       return redirect()->route('admin.dashboard');
+    }
+
+    public function logout(Request $request) 
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }
