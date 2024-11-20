@@ -72,6 +72,7 @@
             success_callback: null          // Default: null
         });
     </script>
+    @include('sweetalert::alert')
 
     @stack('scripts')
 </body>
