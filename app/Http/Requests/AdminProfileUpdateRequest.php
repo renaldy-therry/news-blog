@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminProfileUpdateRequest extends FormRequest
@@ -23,7 +23,8 @@ class AdminProfileUpdateRequest extends FormRequest
     {
         return [
             'image' => ['nullable', 'image', 'max:3000'],
-            'name' =>
+            'name' => ['required', 'max:255'],
+            'email'=>['required', 'max:255', 'email', 'unique:admins,email,'.Auth::guard('admin')->user()->id]
         ];
     }
 }
