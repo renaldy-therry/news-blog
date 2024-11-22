@@ -18,7 +18,9 @@
             </li>
             <li class="menu-header">Starter</li>
 
-            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.languange.index') }}"><i class="far fa-square"></i> <span>Languanges</span></a></li>
+
+            {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
 
 
             <li class="dropdown">
@@ -28,7 +30,7 @@
                     <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
                     <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
                 </ul>
-            </li>
+            </li> --}}
 
         </ul>
 
